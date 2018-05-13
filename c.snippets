@@ -32,11 +32,17 @@ void ${3:`!v vim_snippets#Filename('$1', 'title')`}()
 }
 endsnippet
 
-snippet iguard
-#ifndef ${1:`toupper(vim_snippets#Filename('$1_H', 'UNTITLED_H'))`}
-#define $1
+snippet iguard "Include header once only guard"
+#ifndef ${2:`!p
+if not snip.c:
+	import string
+	name = re.sub(r'[^A-Za-z0-9]+','_', snip.fn).upper()
+	snip.rv = ('%s' % (name)).upper()
+else:
+	snip.rv = snip.c`}
+#define $2
 
-${0}
+${VISUAL}$1
 
-#endif /* end of include guard: $1 */
+#endif /* $2 */
 endsnippet
