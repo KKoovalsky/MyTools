@@ -1,0 +1,42 @@
+snippet fdoxyh
+/**
+ * @file	${1:`!v vim_snippets#Filename('$1.h', 'title')`}
+ * @brief	$0
+ * @author	Kacper Kowalski - kacper.s.kowalski@gmail.com
+ */
+endsnippet
+
+snippet fdoxyc
+/**
+ * @file	${1:`!v vim_snippets#Filename('$1.c', 'title')`}
+ * @brief	$0
+ * @author	Kacper Kowalski - kacper.s.kowalski@gmail.com
+ */
+endsnippet
+
+snippet muftest
+MU_TEST($1)
+{
+	$0
+}
+
+MU_TEST_SUITE($2)
+{
+    MU_RUN_TEST($1);
+}
+
+void ${3:`!v vim_snippets#Filename('$1', 'title')`}()
+{
+    MU_RUN_SUITE($2);
+    MU_REPORT();
+}
+endsnippet
+
+snippet iguard
+#ifndef ${1:`toupper(vim_snippets#Filename('$1_H', 'UNTITLED_H'))`}
+#define $1
+
+${0}
+
+#endif /* end of include guard: $1 */
+endsnippet
